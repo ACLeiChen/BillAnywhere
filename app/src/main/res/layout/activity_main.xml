@@ -5,17 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:baselineAligned="false">
 
     <include
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         layout="@layout/message_input" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_take_photo"
+        android:onClick="dispatchTakePictureIntent" />
 
     <include
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         layout="@layout/news_articles" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="visible"
+        android:id="@+id/imageView1" />
 
 </LinearLayout>
 
