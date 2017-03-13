@@ -1,6 +1,6 @@
 package com.example.leichen.billanywhere.ui.main;
 
-import com.example.leichen.billanywhere.data.db.model.Bill;
+import com.example.leichen.billanywhere.data.model.Bill;
 
 import java.util.List;
 
