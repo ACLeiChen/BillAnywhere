@@ -4,11 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.leichen.billanywhere.R;
-import com.example.leichen.billanywhere.data.db.model.Bill;
+import com.example.leichen.billanywhere.data.model.Bill;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MainActivity extends AppCompatActivity implements MainMvpView{
+
+    @Inject
+    MainMvpPresenter<MainMvpView> mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements MainMvpView{
     }
 
     @Override
-    public void refreshBills(List<Bill> billList) {
+    public void refreshBills(List<Bill> bills) {
 
     }
+
 }

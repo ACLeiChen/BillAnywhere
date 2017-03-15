@@ -1,10 +1,12 @@
 package com.example.leichen.billanywhere.ui.main;
 
+import com.example.leichen.billanywhere.ui.base.BasePresenter;
+
 /**
  * Created by Lei Chen on 2017/3/12.
  */
 
-public class MainPresenter implements MainMvpPresenter{
+public class MainPresenter<T extends MainMvpView> extends BasePresenter<T> implements MainMvpPresenter<T> {
     @Override
     public void onPlusButtonClick() {
 
@@ -19,4 +21,6 @@ public class MainPresenter implements MainMvpPresenter{
     public void onViewInitialized() {
 
     }
+
+
 }
