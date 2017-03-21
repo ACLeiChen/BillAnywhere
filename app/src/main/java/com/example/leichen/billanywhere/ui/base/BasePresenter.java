@@ -35,6 +35,14 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         mMvpView = null;
     }
 
+    public boolean isViewAttached() {
+        return mMvpView != null;
+    }
+
+    public V getMvpView() {
+        return mMvpView;
+    }
+
     public DataManager getDataManager() {
         return mDataManager;
     }
@@ -42,4 +50,5 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     public CompositeDisposable getCompositeDisposable() {
         return mCompositeDisposable;
     }
+
 }

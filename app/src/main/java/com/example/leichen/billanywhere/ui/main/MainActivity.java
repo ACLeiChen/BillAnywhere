@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mPresenter.onAttach(MainActivity.this);
     }
 
     @Override

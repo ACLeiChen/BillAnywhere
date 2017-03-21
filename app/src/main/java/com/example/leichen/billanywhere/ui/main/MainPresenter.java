@@ -1,5 +1,6 @@
 package com.example.leichen.billanywhere.ui.main;
 
+import com.example.leichen.billanywhere.R;
 import com.example.leichen.billanywhere.data.DataManager;
 import com.example.leichen.billanywhere.ui.base.BasePresenter;
 
@@ -27,7 +28,19 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
 
-
+        getCompositeDisposable().add(getDataManager()
+                .seedDatabaseBills()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
+                        getMvpView().onError(R.string.some_error);
+                    }
+                }));
     }
     @Override
     public void onPlusButtonClick() {
