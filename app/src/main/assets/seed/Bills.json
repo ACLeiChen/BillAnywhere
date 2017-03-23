@@ -1,31 +1,57 @@
-{
-	"items":
-	[
-		{
-			"item_name": "Pringles",
-			"quantity": 1,
-			"rate": 6.45,
-			"amount": 6.45,
-			"kind": "Food"
-		},
+[
+	{
+		"items":
+		[
+			{
+				"item_name": "Pringles",
+				"quantity": 1,
+				"rate": 6.45,
+				"amount": 6.45,
+				"kind": "Food"
+			},
 
-		{
-			"item_name": "Coke",
-			"quantity": 2,
-			"rate": 2.2,
-			"amount": 4.4,
-			"kind": "Drink"
-		},
+			{
+				"item_name": "Coke",
+				"quantity": 2,
+				"rate": 2.2,
+				"amount": 4.4,
+				"kind": "Drink"
+			},
 
-		{
-			"item_name": "Head & Shoulders",
-			"quantity": 1,
-			"rate": 15.5,
-			"amount": 15.5,
-			"kind": "Beauty"
-		}
-	],
+			{
+				"item_name": "Head & Shoulders",
+				"quantity": 1,
+				"rate": 15.5,
+				"amount": 15.5,
+				"kind": "Beauty"
+			}
+		],
 
-	"date": "2012-04-23T18:25:43.511Z",
-	"shop_name": "Albert Heijn"
-}
+		"date": "2012-04-23T18:25:43.511Z",
+		"shop_name": "Albert Heijn"
+	},
+
+	{
+		"items":
+		[
+			{
+				"item_name": "Razor DeathAdder",
+				"quantity": 1,
+				"rate": 106.45,
+				"amount": 106.45,
+				"kind": "Computer"
+			},
+
+			{
+				"item_name": "Sony PlayStation 4",
+				"quantity": 1,
+				"rate": 205,
+				"amount": 205,
+				"kind": "Drink"
+			}
+		],
+
+		"date": "2012-05-23T18:10:43.511Z",
+		"shop_name": "MegaStore"
+	}
+]
