@@ -5,12 +5,13 @@ import android.os.Bundle;
 
 import com.example.leichen.billanywhere.R;
 import com.example.leichen.billanywhere.data.model.Bill;
+import com.example.leichen.billanywhere.ui.base.BaseActivity;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements MainMvpView{
+public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
