@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.leichen.billanywhere.data.db.DbHelper;
 import com.example.leichen.billanywhere.data.model.Bill;
+import com.example.leichen.billanywhere.data.model.Item;
 import com.example.leichen.billanywhere.data.network.ApiHelper;
 import com.example.leichen.billanywhere.data.prefs.PreferencesHelper;
 import com.example.leichen.billanywhere.di.ApplicationContext;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
@@ -50,5 +52,45 @@ public class AppDataManager implements DataManager {
         final Gson gson = builder.create();
 
         return null;
+    }
+
+    @Override
+    public Completable saveBill(Bill bill) {
+        return mDbHelper.saveBill(bill);
+    }
+
+    @Override
+    public Completable saveBillList(List<Bill> bills) {
+        return mDbHelper.saveBillList(bills);
+    }
+
+    @Override
+    public Completable saveItem(Item item) {
+        return mDbHelper.saveItem(item);
+    }
+
+    @Override
+    public Completable saveItemList(List<Item> items) {
+        return mDbHelper.saveItemList(items);
+    }
+
+    @Override
+    public Observable<Boolean> isBillEmpty() {
+        return mDbHelper.isBillEmpty();
+    }
+
+    @Override
+    public Observable<Boolean> isItemEmpty() {
+        return mDbHelper.isItemEmpty();
+    }
+
+    @Override
+    public Observable<List<Bill>> getAllBills() {
+        return mDbHelper.getAllBills();
+    }
+
+    @Override
+    public Observable<List<Item>> getAllItems() {
+        return mDbHelper.getAllItems();
     }
 }
