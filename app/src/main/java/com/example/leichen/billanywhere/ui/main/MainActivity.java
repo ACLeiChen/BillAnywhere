@@ -2,6 +2,8 @@ package com.example.leichen.billanywhere.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.example.leichen.billanywhere.R;
 import com.example.leichen.billanywhere.data.model.Bill;
@@ -12,6 +14,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMvpView{
+
+    private RecyclerView billsRecyclerView;
 
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
@@ -26,6 +30,8 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Override
     protected void setUp() {
+        billsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //billsRecyclerView.setAdapter();
         mPresenter.onViewInitialized();
     }
 
