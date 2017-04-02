@@ -47,7 +47,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<Boolean> seedDatabaseBills() {
+    public Completable seedDatabaseBills() {
         GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         final Gson gson = builder.create();
 
