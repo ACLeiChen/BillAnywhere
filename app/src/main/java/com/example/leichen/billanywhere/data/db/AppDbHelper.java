@@ -6,6 +6,7 @@ import com.example.leichen.billanywhere.data.model.DaoSession;
 import com.example.leichen.billanywhere.data.model.Item;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -49,7 +50,7 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public Observable<Boolean> isBillEmpty() {
-        return null;
+        return Observable.fromCallable(() -> !(mDaoSession.getBillDao().count() > 0));
     }
 
     @Override
@@ -59,7 +60,7 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public Observable<List<Bill>> getAllBills() {
-        return null;
+        return Observable.fromCallable(() -> mDaoSession.getBillDao().loadAll());
     }
 
     @Override

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.leichen.billanywhere.R;
 
-public class BaseActivity extends AppCompatActivity implements MvpView {
+public abstract class BaseActivity extends AppCompatActivity implements MvpView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,4 +40,6 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
     }
+
+    protected abstract void setUp();
 }

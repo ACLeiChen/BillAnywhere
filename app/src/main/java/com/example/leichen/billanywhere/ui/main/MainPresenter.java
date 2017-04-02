@@ -27,20 +27,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
-
-        getCompositeDisposable().add(getDataManager()
-                .seedDatabaseBills()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(Boolean aBoolean) throws Exception {
-                        if(!isViewAttached()) {
-                            return;
-                        }
-                        getMvpView().onError(R.string.some_error);
-                    }
-                }));
     }
     @Override
     public void onPlusButtonClick() {
@@ -54,6 +40,21 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
 
     @Override
     public void onViewInitialized() {
-
+        getCompositeDisposable().add(getDataManager()
+                .seedDatabaseBills()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(() -> {
+                    //onComplete do nothing now
+                }, throwable -> {
+                    getMvpView().onError("Errors occur when seeding bills.");
+                })
+        );
+        getCompositeDisposable().add(getDataManager()
+                .getAllBills()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(bills -> getMvpView().refreshBills(bills))
+        );
     }
 }

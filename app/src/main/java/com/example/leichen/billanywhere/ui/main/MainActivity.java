@@ -21,6 +21,12 @@ public class MainActivity extends BaseActivity implements MainMvpView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPresenter.onAttach(MainActivity.this);
+        setUp();
+    }
+
+    @Override
+    protected void setUp() {
+        mPresenter.onViewInitialized();
     }
 
     @Override
@@ -37,5 +43,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     public void refreshBills(List<Bill> bills) {
 
     }
+
+
 
 }
