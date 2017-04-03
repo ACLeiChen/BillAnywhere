@@ -13,8 +13,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+
 public class MainActivity extends BaseActivity implements MainMvpView{
 
+    @BindView(R.id.billsRecyclerView)
     private RecyclerView billsRecyclerView;
 
     @Inject
