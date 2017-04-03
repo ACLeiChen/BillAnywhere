@@ -36,12 +36,11 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     }
 
     @Override
-    public void showAddingNewBillFragment() {
-
+    public void onPlusButtonClick() {
     }
 
     @Override
-    public void openOldBillItemFragment() {
+    public void onOldBillItemClick() {
 
     }
 
