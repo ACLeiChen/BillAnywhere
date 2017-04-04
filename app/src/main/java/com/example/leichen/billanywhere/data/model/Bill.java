@@ -36,6 +36,11 @@ public class Bill {
     @ToMany(referencedJoinProperty = "billId")
     private List<Item> items = null;
 
+    @SerializedName("total_amount")
+    @Expose
+    @Property(nameInDb = "total_amount")
+    private Double totalAmount;
+
     @Expose
     @SerializedName("created_at")
     @Property(nameInDb = "created_at")
@@ -62,12 +67,13 @@ public class Bill {
     }
 
 
-    @Generated(hash = 1941473591)
-    public Bill(Long id, Date shopping_date, String shopName, String createdAt,
+    @Generated(hash = 1574793112)
+    public Bill(Long id, Date shopping_date, String shopName, Double totalAmount, String createdAt,
             String updatedAt) {
         this.id = id;
         this.shopping_date = shopping_date;
         this.shopName = shopName;
+        this.totalAmount = totalAmount;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -95,6 +101,13 @@ public class Bill {
         return items;
     }
 
+    public Double getTotalAmount() {
+        return this.totalAmount;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 
     public void setItems(List<Item> items) {
         this.items = items;
@@ -197,7 +210,6 @@ public class Bill {
         }
         myDao.update(this);
     }
-
 
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 173933155)
