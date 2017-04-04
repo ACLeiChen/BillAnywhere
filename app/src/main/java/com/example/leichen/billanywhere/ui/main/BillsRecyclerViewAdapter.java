@@ -57,9 +57,9 @@ public class BillsRecyclerViewAdapter extends RecyclerView.Adapter<BillsRecycler
 
     @Override
     public void onBindViewHolder(BillViewHolder billViewHolder, int position) {
-        billViewHolder.shopping_date.setText(bills.get(position).getShopping_date().toString());
         billViewHolder.timestamp.setImageResource(R.drawable.timestamp);
-        //billViewHolder.totalAmount.setText(bills.get(position).getTotoal_amount);
+        billViewHolder.shopping_date.setText(bills.get(position).getShopping_date().toString());
+        billViewHolder.totalAmount.setText(bills.get(position).getTotalAmount().toString());
     }
 
     @Override

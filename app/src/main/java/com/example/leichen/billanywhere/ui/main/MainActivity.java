@@ -18,7 +18,7 @@ import butterknife.BindView;
 public class MainActivity extends BaseActivity implements MainMvpView{
 
     @BindView(R.id.billsRecyclerView)
-    private RecyclerView billsRecyclerView;
+    public RecyclerView billsRecyclerView;
 
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
