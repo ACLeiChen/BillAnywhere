@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import com.example.leichen.billanywhere.R;
 
+import butterknife.Unbinder;
+
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
+
+    private Unbinder mUnBinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
                 .findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
+    }
+
+    public void setUnBinder(Unbinder unBinder) {
+        mUnBinder = unBinder;
     }
 
     protected abstract void setUp();

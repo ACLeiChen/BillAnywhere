@@ -14,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainMvpView{
@@ -28,6 +29,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(MainActivity.this);
         setUp();
     }
@@ -52,7 +54,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Override
     public void refreshBills(List<Bill> bills) {
-        billsRecyclerView.setAdapter(new BillsRecyclerViewAdapter(bills, this));
+        billsRecyclerView.setAdapter(new BillsRecyclerViewAdapter(bills));
     }
 
 
