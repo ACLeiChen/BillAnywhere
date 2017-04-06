@@ -30,22 +30,22 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public Completable saveBill(Bill bill) {
-        return null;
+        return Completable.fromAction(() -> mDaoSession.getBillDao().insert(bill));
     }
 
     @Override
     public Completable saveBillList(List<Bill> bills) {
-        return null;
+        return Completable.fromAction(() -> mDaoSession.getBillDao().insertInTx(bills));
     }
 
     @Override
     public Completable saveItem(Item item) {
-        return null;
+        return Completable.fromAction(() -> mDaoSession.getItemDao().insert(item));
     }
 
     @Override
     public Completable saveItemList(List<Item> items) {
-        return null;
+        return Completable.fromAction(() -> mDaoSession.getItemDao().insertInTx(items));
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public Observable<Boolean> isItemEmpty() {
-        return null;
+        return Observable.fromCallable(() -> !(mDaoSession.getItemDao().count() > 0));
     }
 
     @Override
@@ -65,6 +65,6 @@ public class AppDbHelper implements DbHelper {
 
     @Override
     public Observable<List<Item>> getAllItems() {
-        return null;
+        return Observable.fromCallable(() -> mDaoSession.getItemDao().loadAll());
     }
 }
