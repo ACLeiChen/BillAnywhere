@@ -10,40 +10,36 @@ import com.example.leichen.billanywhere.data.prefs.PreferencesHelper;
 import com.example.leichen.billanywhere.di.ApplicationContext;
 import com.example.leichen.billanywhere.utils.AppConstants;
 import com.example.leichen.billanywhere.utils.CommonUtils;
+import com.example.leichen.billanywhere.utils.MvpLogger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.$Gson$Types;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Function;
 
 /**
  * Created by Lei Chen on 2017/3/13.
  */
 
+@Singleton
 public class AppDataManager implements DataManager {
 
     private final Context mContext;
     private final DbHelper mDbHelper;
-    private final PreferencesHelper mPreferencesHelper;
-    private final ApiHelper mApiHelper;
 
     @Inject
     public AppDataManager(@ApplicationContext Context context,
-                          DbHelper dbHelper,
-                          PreferencesHelper preferencesHelper,
-                          ApiHelper apiHelper) {
+                          DbHelper dbHelper) {
         mContext = context;
         mDbHelper = dbHelper;
-        mPreferencesHelper = preferencesHelper;
-        mApiHelper = apiHelper;
     }
 
     @Override
@@ -51,7 +47,15 @@ public class AppDataManager implements DataManager {
         GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         final Gson gson = builder.create();
 
-        return null;
+        Type type = $Gson$Types.newParameterizedTypeWithOwner(null, List.class, Bill.class);
+        List<Bill> bills = null;
+        try {
+            bills = gson.fromJson(CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_BILLS), type);
+        } catch (IOException e) {
+            e.printStackTrace();
+            MvpLogger.e(e, "seedDatabaseBills failed.");
+        }
+        return saveBillList(bills);
     }
 
     @Override
