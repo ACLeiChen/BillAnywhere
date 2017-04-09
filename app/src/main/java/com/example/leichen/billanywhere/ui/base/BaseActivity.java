@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.leichen.billanywhere.R;
+import com.example.leichen.billanywhere.di.component.ActivityComponent;
 
 import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
+
+    private ActivityComponent mActivityComponent;
 
     private Unbinder mUnBinder;
 
@@ -21,6 +24,9 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         super.onCreate(savedInstanceState);
     }
 
+    public ActivityComponent getActivityComponent() {
+        return mActivityComponent;
+    }
     @Override
     public void onError(@StringRes int resId) {
         onError(getString(resId));
