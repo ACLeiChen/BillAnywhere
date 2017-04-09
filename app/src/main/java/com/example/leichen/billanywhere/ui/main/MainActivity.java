@@ -29,6 +29,9 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getActivityComponent().inject(this);
+
         setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(MainActivity.this);
         setUp();
@@ -47,7 +50,6 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     //OnClick or OnItemClick?, needs more reading.
     @Override
-    @OnClick({R.id.bill_simple, R.id.timestamp, R.id.shopping_date, R.id.total_amount})
     public void onOldBillItemClick() {
 
     }
