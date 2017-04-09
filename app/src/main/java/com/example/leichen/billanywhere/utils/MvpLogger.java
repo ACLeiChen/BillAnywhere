@@ -19,48 +19,50 @@ import com.example.leichen.billanywhere.BuildConfig;
 
 import timber.log.Timber;
 
-/**
- * Created by amitshekhar on 15/02/17.
- */
 
 public class MvpLogger {
 
     public static void init() {
         if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
+            Timber.plant(new Timber.DebugTree(){
+                @Override
+                protected String createStackElementTag(StackTraceElement element) {
+                    return super.createStackElementTag(element) + ":line:" + element.getLineNumber();
+                }
+            });
         }
     }
 
-    public static void d(String s, Object... objects) {
-        Timber.d(s, objects);
+    public static void d(String s, Object... args) {
+        Timber.d(s, args);
     }
 
-    public static void d(Throwable throwable, String s, Object... objects) {
-        Timber.d(throwable, s, objects);
+    public static void d(Throwable throwable, String s, Object... args) {
+        Timber.d(throwable, s, args);
     }
 
-    public static void i(String s, Object... objects) {
-        Timber.i(s, objects);
+    public static void i(String s, Object... args) {
+        Timber.i(s, args);
     }
 
-    public static void i(Throwable throwable, String s, Object... objects) {
-        Timber.i(throwable, s, objects);
+    public static void i(Throwable throwable, String s, Object... args) {
+        Timber.i(throwable, s, args);
     }
 
-    public static void w(String s, Object... objects) {
-        Timber.w(s, objects);
+    public static void w(String s, Object... args) {
+        Timber.w(s, args);
     }
 
-    public static void w(Throwable throwable, String s, Object... objects) {
-        Timber.w(throwable, s, objects);
+    public static void w(Throwable throwable, String s, Object... args) {
+        Timber.w(throwable, s, args);
     }
 
-    public static void e(String s, Object... objects) {
-        Timber.e(s, objects);
+    public static void e(String s, Object... args) {
+        Timber.e(s, args);
     }
 
-    public static void e(Throwable throwable, String s, Object... objects) {
-        Timber.e(throwable, s, objects);
+    public static void e(Throwable throwable, String s, Object... args) {
+        Timber.e(throwable, s, args);
     }
 
 }
