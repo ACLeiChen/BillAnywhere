@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.leichen.billanywhere.BillAnywhereApp;
 import com.example.leichen.billanywhere.R;
 import com.example.leichen.billanywhere.di.component.ActivityComponent;
+import com.example.leichen.billanywhere.di.component.DaggerActivityComponent;
+import com.example.leichen.billanywhere.di.module.ActivityModule;
 
 import butterknife.Unbinder;
 
@@ -22,6 +25,10 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(((BillAnywhereApp) getApplication()).getComponent())
+                .build();
     }
 
     public ActivityComponent getActivityComponent() {
