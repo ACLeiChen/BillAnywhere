@@ -10,5 +10,5 @@ public final class AppConstants {
     public static final String STATUS_CODE_FAILED = "failed";
 
     public static final String DB_NAME = "billanywhere.db";
-    public static final String SEED_DATABASE_BILLS = "seed/bills.json";
+    public static final String SEED_DATABASE_BILLS = "seed/Bills.json";
 }
