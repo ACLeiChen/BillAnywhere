@@ -14,9 +14,11 @@ import com.example.leichen.billanywhere.utils.MvpLogger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.$Gson$Types;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,8 +49,8 @@ public class AppDataManager implements DataManager {
         GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         final Gson gson = builder.create();
 
-        Type type = $Gson$Types.newParameterizedTypeWithOwner(null, List.class, Bill.class);
-        List<Bill> bills = null;
+        Type type = new TypeToken<List<Bill>>(){}.getType();
+        List<Bill> bills = new ArrayList<>();
         try {
             bills = gson.fromJson(CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_BILLS), type);
         } catch (IOException e) {
