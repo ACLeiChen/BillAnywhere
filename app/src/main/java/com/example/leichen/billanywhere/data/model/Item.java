@@ -33,12 +33,12 @@ public class Item {
     @SerializedName("rate")
     @Expose
     @Property(nameInDb = "rate")
-    private Integer rate;
+    private Double rate;
 
     @SerializedName("amount")
     @Expose
     @Property(nameInDb = "amount")
-    private Integer amount;
+    private Double amount;
 
     @SerializedName("kind")
     @Expose
@@ -70,9 +70,9 @@ public class Item {
 
 
 
-    @Generated(hash = 290751382)
-    public Item(Long id, String itemName, Integer quantity, Integer rate,
-            Integer amount, String kind, long billId) {
+    @Generated(hash = 937902108)
+    public Item(Long id, String itemName, Integer quantity, Double rate, Double amount, String kind,
+            long billId) {
         this.id = id;
         this.itemName = itemName;
         this.quantity = quantity;
@@ -81,7 +81,6 @@ public class Item {
         this.kind = kind;
         this.billId = billId;
     }
-
 
 
     public String getItemName() {
@@ -100,19 +99,19 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public Integer getRate() {
-        return rate;
+    public Double getRate() {
+        return this.rate;
     }
 
-    public void setRate(Integer rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Double getAmount() {
+        return this.amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -124,30 +123,21 @@ public class Item {
         this.kind = kind;
     }
 
-
-
     public Long getId() {
         return this.id;
     }
-
-
 
     public void setId(Long id) {
         this.id = id;
     }
 
-
-
     public long getBillId() {
         return this.billId;
     }
 
-
-
     public void setBillId(long billId) {
         this.billId = billId;
     }
-
 
 
     /** To-one relationship, resolved on first access. */
@@ -168,8 +158,6 @@ public class Item {
         }
         return bill;
     }
-
-
 
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 601743104)
@@ -226,8 +214,6 @@ public class Item {
         }
         myDao.update(this);
     }
-
-
 
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 881068859)

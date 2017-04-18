@@ -33,8 +33,10 @@ public class Bill {
     @Property(nameInDb = "shop_name")
     private String shopName;
 
+    @SerializedName("items")
+    @Expose
     @ToMany(referencedJoinProperty = "billId")
-    private List<Item> items = null;
+    private List<Item> items;
 
     @SerializedName("total_amount")
     @Expose
