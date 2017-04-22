@@ -26,7 +26,7 @@ public class Bill {
     @SerializedName("date")
     @Expose
     @Property(nameInDb = "shopping_date")
-    private Date shopping_date;
+    private Date shoppingDate;
 
     @SerializedName("shop_name")
     @Expose
@@ -69,16 +69,22 @@ public class Bill {
     }
 
 
-    @Generated(hash = 1574793112)
-    public Bill(Long id, Date shopping_date, String shopName, Double totalAmount, String createdAt,
+
+
+
+    @Generated(hash = 1187439919)
+    public Bill(Long id, Date shoppingDate, String shopName, Double totalAmount, String createdAt,
             String updatedAt) {
         this.id = id;
-        this.shopping_date = shopping_date;
+        this.shoppingDate = shoppingDate;
         this.shopName = shopName;
         this.totalAmount = totalAmount;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+
+
 
 
     /**
@@ -115,12 +121,12 @@ public class Bill {
         this.items = items;
     }
 
-    public Date getDate() {
-        return shopping_date;
+    public Date getShoppingDate() {
+        return this.shoppingDate;
     }
 
-    public void setDate(Date shopping_date) {
-        this.shopping_date = shopping_date;
+    public void setShoppingDate(Date shoppingDate) {
+        this.shoppingDate = shoppingDate;
     }
 
     public String getShopName() {
@@ -155,16 +161,6 @@ public class Bill {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public Date getShopping_date() {
-        return this.shopping_date;
-    }
-
-
-    public void setShopping_date(Date shopping_date) {
-        this.shopping_date = shopping_date;
     }
 
 
