@@ -9,16 +9,17 @@ import com.example.leichen.billanywhere.data.network.ApiHelper;
 import com.example.leichen.billanywhere.data.prefs.PreferencesHelper;
 import com.example.leichen.billanywhere.di.ApplicationContext;
 import com.example.leichen.billanywhere.utils.AppConstants;
+import com.example.leichen.billanywhere.utils.BillDeserializer;
 import com.example.leichen.billanywhere.utils.CommonUtils;
 import com.example.leichen.billanywhere.utils.MvpLogger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,6 +48,8 @@ public class AppDataManager implements DataManager {
     @Override
     public Completable seedDatabaseBills() {
         GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+        builder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        builder.registerTypeAdapter(Bill.class, new BillDeserializer());
         final Gson gson = builder.create();
 
         Type type = new TypeToken<List<Bill>>(){}.getType();
