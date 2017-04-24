@@ -48,6 +48,7 @@ dependencies {
 
     // database
     compile "org.greenrobot:greendao:$rootProject.greenDaoVersion"
+    debugCompile "com.amitshekhar.android:debug-db:$rootProject.debugdbVersion"
 
     //json parsing
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
