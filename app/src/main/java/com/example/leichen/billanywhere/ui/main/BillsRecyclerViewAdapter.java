@@ -48,7 +48,7 @@ public class BillsRecyclerViewAdapter extends RecyclerView.Adapter<BillsRecycler
         this.bills = bills;
     }
 
-
+    @Override
     public BillViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.bill_simple, parent, false);
         BillViewHolder billViewHolder = new BillViewHolder(v);
