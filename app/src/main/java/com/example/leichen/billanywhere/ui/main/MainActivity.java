@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.leichen.billanywhere.R;
 import com.example.leichen.billanywhere.data.model.Bill;
+import com.example.leichen.billanywhere.ui.BillItem.BillItemActivity;
 import com.example.leichen.billanywhere.ui.base.BaseActivity;
 
 import java.util.List;
@@ -50,13 +51,14 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     //OnClick or OnItemClick?, needs more reading.
     @Override
-    public void openOldBillDetailsActivity() {
-        
+    public void openBillItemActivity(Long id) {
+        startActivity(BillItemActivity.getStartIntent(this));
+        finish();
     }
 
     @Override
     public void refreshBills(List<Bill> bills) {
-        billsRecyclerView.setAdapter(new BillsRecyclerViewAdapter(bills));
+        billsRecyclerView.setAdapter(new BillsRecyclerViewAdapter(bills, (id -> openBillItemActivity(id))));
     }
 
 

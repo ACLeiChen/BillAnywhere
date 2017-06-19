@@ -24,6 +24,12 @@ public class BillsRecyclerViewAdapter extends RecyclerView.Adapter<BillsRecycler
 
     private List<Bill> bills;
 
+    public interface OnItemClickListener {
+        void onItemClick(Long id);
+    }
+
+    private final OnItemClickListener listener;
+
     public static class BillViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.bill_simple)
@@ -37,15 +43,25 @@ public class BillsRecyclerViewAdapter extends RecyclerView.Adapter<BillsRecycler
 
         @BindView(R.id.total_amount)
         TextView totalAmount;
-
         public BillViewHolder(View billView) {
             super(billView);
             ButterKnife.bind(this, billView);
         }
+
+        public void setListener(Bill bill, OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(bill.getId());
+                }
+            });
+
+        }
     }
 
-    public BillsRecyclerViewAdapter(List<Bill> bills){
+
+    public BillsRecyclerViewAdapter(List<Bill> bills, OnItemClickListener listener){
         this.bills = bills;
+        this.listener = listener;
     }
 
     @Override
@@ -60,6 +76,8 @@ public class BillsRecyclerViewAdapter extends RecyclerView.Adapter<BillsRecycler
         billViewHolder.timestamp.setImageResource(R.drawable.timestamp);
         billViewHolder.shopping_date.setText(bills.get(position).getShoppingDate().toString());
         billViewHolder.totalAmount.setText(bills.get(position).getTotalAmount().toString());
+        billViewHolder.setListener(bills.get(position), listener);
+
     }
 
     @Override

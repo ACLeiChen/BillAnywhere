@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface MainMvpView extends MvpView{
     void openCreateNewBillActivity();
-    void openOldBillDetailsActivity();
+    void openBillItemActivity(Long id);
 
     void refreshBills(List<Bill> bills);
 }
