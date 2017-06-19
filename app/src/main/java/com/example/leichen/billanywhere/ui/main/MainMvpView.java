@@ -10,8 +10,8 @@ import java.util.List;
  */
 
 public interface MainMvpView extends MvpView{
-    void onPlusButtonClick();
-    void onOldBillItemClick();
+    void openCreateNewBillActivity();
+    void openOldBillDetailsActivity();
 
     void refreshBills(List<Bill> bills);
 }

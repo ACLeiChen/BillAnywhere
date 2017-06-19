@@ -45,13 +45,13 @@ public class MainActivity extends BaseActivity implements MainMvpView{
 
     @Override
     @OnClick(R.id.plusButton)
-    public void onPlusButtonClick() {
+    public void openCreateNewBillActivity() {
     }
 
     //OnClick or OnItemClick?, needs more reading.
     @Override
-    public void onOldBillItemClick() {
-
+    public void openOldBillDetailsActivity() {
+        
     }
 
     @Override
