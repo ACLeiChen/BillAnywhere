@@ -1,5 +1,6 @@
 package com.example.leichen.billanywhere.ui.main;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -52,8 +53,9 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     //OnClick or OnItemClick?, needs more reading.
     @Override
     public void openBillItemActivity(Long id) {
-        startActivity(BillItemActivity.getStartIntent(this));
-        finish();
+        Intent intent = new Intent(this, BillItemActivity.class);
+        intent.putExtra("BillId", id);
+        startActivity(intent);
     }
 
     @Override
