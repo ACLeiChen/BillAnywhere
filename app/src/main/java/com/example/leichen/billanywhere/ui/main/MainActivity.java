@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity implements MainMvpView{
     public RecyclerView billsRecyclerView;
 
     @Inject
-    MainMvpPresenter<MainMvpView> mPresenter;
+    public MainMvpPresenter<MainMvpView> mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
