@@ -67,4 +67,9 @@ public class AppDbHelper implements DbHelper {
     public Observable<List<Item>> getAllItems() {
         return Observable.fromCallable(() -> mDaoSession.getItemDao().loadAll());
     }
+
+    @Override
+    public Observable<Bill> getBill(Long id) {
+        return null;
+    }
 }

@@ -102,4 +102,9 @@ public class AppDataManager implements DataManager {
     public Observable<List<Item>> getAllItems() {
         return mDbHelper.getAllItems();
     }
+
+    @Override
+    public Observable<Bill> getBill(Long id) {
+        return mDbHelper.getBill(id);
+    }
 }

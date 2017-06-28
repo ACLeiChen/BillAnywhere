@@ -24,4 +24,5 @@ public interface DbHelper {
 
     Observable<List<Bill>> getAllBills();
     Observable<List<Item>> getAllItems();
+    Observable<Bill> getBill(Long id);
 }
